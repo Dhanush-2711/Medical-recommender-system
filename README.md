@@ -1,1 +1,1 @@
-# Medical-Recommender-System
+# medical_recommendation_system
