@@ -26,33 +26,36 @@ Clone this repository and navigate to its root directory. Then install the requi
 pip install -r requirements.txt
 ```
 
-### 3. Prepare the Data Models
+### 3. Download the Dataset
 
-Before running the web application, you must train the machine learning models and generate the required preprocessed `.csv` and `.pkl` files.
+The raw datasets and model files are stored externally to keep the repository lightweight and prevent IDE performance issues. 
 
-Ensure the raw CSV data files are present in your directory:
-- `description.csv`
-- `diets.csv`
-- `medications.csv`
-- `precautions_df.csv`
-- `symtoms_df.csv`
-- `workout_df.csv`
+1. **Download the data files** from this [Google Drive Folder](https://drive.google.com/drive/folders/1WXoNUfb0tDS4we7RhfbtkjfiT_2oZUMi?usp=drive_link).
+2. Place the following `.csv` files directly into the root directory of this project:
+   - `description.csv`
+   - `diets.csv`
+   - `medications.csv`
+   - `precautions_df.csv`
+   - `symtoms_df.csv`
+   - `workout_df.csv`
 
-Then run the training script:
+### 4. Prepare the Data Models
+
+Before running the web application, you must train the machine learning models to generate the required preprocessed artifacts. Run the training script:
 
 ```bash
 python model_training.py
 ```
 
-This will train the hybrid model and generate the following artifacts (note: these are `.gitignore`d intentionally to prevent large binary and data files from bloating the git history):
+This will generate the following artifacts (which are ignored by Git to maintain repository health):
 - `hybrid_model.pkl`
 - `vectorizer.pkl`
 - `encoder.pkl`
 - `merged_df.csv`
 
-### 4. Run the Application
+### 5. Run the Application
 
-Once the `.pkl` models and `merged_df.csv` file have been generated successfully, you can start the Streamlit web server:
+Once the `.pkl` models and `merged_df.csv` file have been generated, start the Streamlit web server:
 
 ```bash
 streamlit run app.py
@@ -62,7 +65,7 @@ The application will be available in your browser at `http://localhost:8501`.
 
 ## Important Note regarding `.gitignore`
 
-The generated files (`*.pkl` and `*.csv`) have been added to the `.gitignore`. **Do not commit these files** to the repository. They should be dynamically generated locally by running `python model_training.py` as detailed above.
+This project uses a strict `.gitignore` policy. **Do not commit `.pkl` or `.csv` files** to the repository. These files should be maintained locally or downloaded from the provided external link to ensure the IDE environment remains stable and the repository stays under the 100MB Git limit.
 
 ## Medical Disclaimer
 
